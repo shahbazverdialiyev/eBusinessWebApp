@@ -1,0 +1,50 @@
+﻿@model List<Member>
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Members</h1>
+    <p class="mb-4">
+        DataTables is a third party plugin that is used to generate the demo table below.
+        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            <div><a class="text-success" asp-action="create">New</a></div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Surname</th>
+                                        <th>Position</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Member member in Model)
+                                    {
+                                        <tr class="odd">
+                                            <td>@member.Name</td>
+                                            <td>@member.Surname</td>
+                                            <td>@member.Position</td>
+                                            <td><a asp-action="details" asp-route-id="@member.Id">more..</a></td>
+                                            <td><a asp-action="update" asp-route-id="@member.Id">edit</a></td>
+                                            <td><a asp-action="delete" asp-route-id="@member.Id">X</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</div>
